@@ -12,6 +12,6 @@
         android:layout_marginTop="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="赵浩是老板，发红包，是不是傻1111111"
+        android:text="赵浩是老板，发红包，是不是傻33333333333"
         android:textSize="@dimen/textSize"/>
 </LinearLayout>
