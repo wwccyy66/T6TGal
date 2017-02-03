@@ -5,4 +5,7 @@
     <string name="text2">欢迎来到第三张页面哦！！！等你好久了</string>
     <string name="text3">欢迎来到第四张页面哦！！！等你好久了</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

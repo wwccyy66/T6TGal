@@ -11,6 +11,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.example.dell.t6tgal.Fragment.CursorLoaderListFragment1;
 import com.example.dell.t6tgal.Fragment.Fragment1;
 import com.example.dell.t6tgal.Fragment.Fragment2;
 import com.example.dell.t6tgal.Fragment.Fragment3;
@@ -71,7 +72,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         for (int i=0;i<titleStr.length;i++){
             titleList.add(titleStr);
         }
-        fragList.add(new Fragment1());
+        fragList.add(new CursorLoaderListFragment1());
         fragList.add(new Fragment2());
         fragList.add(new Fragment3());
         fragList.add(new Fragment4());
