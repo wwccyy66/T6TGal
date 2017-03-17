@@ -1,6 +1,7 @@
 package com.example.dell.t6tgal.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerTabStrip;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.dell.t6tgal.Fragment.CursorLoaderListFragment1;
@@ -27,12 +29,13 @@ import java.util.List;
  * Created by dell on 2017/1/10.
  */
 
-public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener,View.OnClickListener {
     private ViewPager pager=null;
     private MyPagerAdapter adapter=null;
+    private Button userBtn,imagBtn;
     private View[] views = new View[4];
     private int[] viewId = {R.layout.view1, R.layout.view2, R.layout.view3, R.layout.view4};
-    private String[] titleStr = {"第一页", "第二页", "第三页", "第四页"};
+    private String[] titleStr = {"联系人", "评价详情", "主页", "列表"};
     //数据源
     private List viewList = null;
     private List<String[]> titleList = null;
@@ -57,9 +60,13 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         adapter=new MyPagerAdapter(this,titleList,viewList);
         pager.setAdapter(myFragmentPagerAdapter);
         pager.setOnPageChangeListener(this);
+        userBtn.setOnClickListener(this);
+        imagBtn.setOnClickListener(this);
     }
 
     private void initViews() {
+        userBtn= (Button) findViewById(R.id.userBtn);
+        imagBtn= (Button) findViewById(R.id.imagBtn);
         pager=(ViewPager)findViewById(R.id.id_viewpager);
         tab = (PagerTabStrip) findViewById(R.id.id_tab);
         fragList = new ArrayList<>();
@@ -93,6 +100,20 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.userBtn:
+                Intent intent=new Intent(this,UserInfoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imagBtn:
+                Intent intent2=new Intent(this,LruCacheActivity.class);
+                startActivity(intent2);
+                break;
+        }
     }
 }
 class WebViewJavaScriptInterface {

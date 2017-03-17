@@ -32,14 +32,13 @@ public class NewListActivity extends AppCompatActivity  implements AdapterView.O
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        newsList= (ExpandableListView) findViewById(R.id.listView);
+        //newsList= (ExpandableListView) findViewById(R.id.listView);
         initView();
         newsList.setOnItemClickListener(NewListActivity.this);
     }
 
     private void initView() {
         news=new ArrayList<>(0);
-
         adapter=new ExpandableListAdapter(this,news,news);
         newsList.setAdapter(adapter);
         loadData();

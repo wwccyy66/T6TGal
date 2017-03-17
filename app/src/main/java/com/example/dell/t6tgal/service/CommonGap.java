@@ -4,16 +4,27 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.nfc.cardemulation.OffHostApduService;
 import android.util.Log;
+import android.webkit.ClientCertRequest;
+import android.widget.Toast;
+
+import com.example.dell.t6tgal.activity.ViewPagerActivity;
 import com.example.dell.t6tgal.constant.Constant;
 import com.example.dell.t6tgal.model.News;
+import com.lidroid.xutils.http.RequestParams;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.ResponseHandlerInterface;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.BitmapCallback;
 import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.File;
+import java.util.Map;
+
 import okhttp3.Call;
 
 /**
@@ -25,6 +36,7 @@ public class CommonGap  {
     //与服务器交互地址 Constant.BASE_URL;
     //activity、service
 
+    private static AsyncHttpClient client = new AsyncHttpClient();
     private Activity activity;
 
     private Service service;
@@ -71,20 +83,53 @@ public class CommonGap  {
      * 提交登陆请求：
      *
      */
-    public void postLogin(String userName,String passWord){
-        OkHttpUtils.post().url(Constant.BASE_URL).addParams(userName,passWord).build().execute(new StringCallback() {
+    public void postLogin(String key,String value){
+
+        OkHttpUtils.post().url(Constant.URL_Login).addParams(key,value).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-
+                Log.e("233333333","失败");
             }
 
             @Override
             public void onResponse(String response) {
+                Log.e("233333强强强强333",response);
+                if (response.equals("true")){
+                    Toast.makeText(getContext(),"登陆成功",Toast.LENGTH_LONG).show();
 
+                }else if (response.equals("false")){
+                    Toast.makeText(getContext(),"登陆失败",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
+    public void postMap(Map<String,String>  map){
+        OkHttpUtils.post().url(Constant.URL_Login).params(map).build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                Log.e("233333333","失败");
+            }
 
+            @Override
+            public void onResponse(String response) {
+                Log.e("233333强强强强333",response);
+            }
+        });
+    }
+    public String postLogin(){
+        OkHttpUtils.get().url(Constant.BASE_URL).build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                Log.e("22222","233322");
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("22222",response);
+            }
+        });
+        return  null;
+    }
     /**
      * 提交字符串到服务器
      * @param url
@@ -94,12 +139,12 @@ public class CommonGap  {
         OkHttpUtils.postString().url(url).content(data).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
-
+                Log.e("233333111111133","失败");
             }
 
             @Override
             public void onResponse(String response) {
-
+                Log.e("233333强强强强333",response);
             }
         });
     }
@@ -135,7 +180,7 @@ public class CommonGap  {
 
             @Override
             public void onResponse(String response) {
-
+                Log.d("fwe3333333333333",response);
             }
         });
     }
@@ -179,7 +224,6 @@ public class CommonGap  {
 
     }
     public News getNews (String url){
-
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
@@ -188,7 +232,25 @@ public class CommonGap  {
 
             @Override
             public void onResponse(String response) {
-                Log.i("------------->","onResponse");
+                Log.e("----2222--------->",response);
+//                news.setTitle(response);
+            }
+        });
+        return news;
+    }
+    public News PostNews (String url){
+        OkHttpUtils.post().url(url).build().execute(new StringCallback() {
+
+            @Override
+            public void onError(Call call, Exception e) {
+                Log.e("------------->","onError");
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("------------->",response);
+                Log.d("dhhthdfhf44444444dhdh","444444444rger");
+                Log.d("dhhthdfhfdhdh",response);
                 news.setTitle(response);
             }
         });

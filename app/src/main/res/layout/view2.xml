@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/tv_send"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textSize="20dp"
+        android:textColor="@color/EditColor"
+        android:hint="评价内容少于20字"/>
+    <Button
+        android:id="@+id/btn_send"
+        android:background="@color/btnColor"
+        android:layout_width="50dp"
+        android:layout_height="37dp"
+        android:layout_gravity="center_horizontal"
+        android:text="发布"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text1"
-        android:textSize="@dimen/textSize"/>
-    <TextView
-        android:layout_marginTop="60dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="赵浩是老板，发红包，是不是傻33333333333"
-        android:textSize="@dimen/textSize"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@color/txtColor"
+        android:gravity="center"
+        android:textSize="20dp"/>
 </LinearLayout>

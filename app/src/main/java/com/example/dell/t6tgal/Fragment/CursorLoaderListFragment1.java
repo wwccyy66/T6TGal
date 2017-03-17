@@ -13,12 +13,12 @@ import android.support.v4.widget.SearchViewCompat;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * Created by dell on 2017/2/3.
@@ -103,7 +103,7 @@ public class CursorLoaderListFragment1 extends ListFragment implements SearchVie
     }
     @Override public void onListItemClick(ListView l, View v, int position, long id) {
         // Insert desired behavior here.
-        Log.e("FragmentComplexLists", "Items-------------- clicked: " + id);
+        Toast.makeText(getActivity(),"Items-------------- clicked: " + id,Toast.LENGTH_SHORT).show();
     }
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         //当需要创建一个新的loader时被调用。

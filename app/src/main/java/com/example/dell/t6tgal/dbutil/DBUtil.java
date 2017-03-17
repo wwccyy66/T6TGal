@@ -20,6 +20,7 @@ import java.util.List;
 public class DBUtil {
 
     private static Activity activity;
+    public static String filePath="D:\\2.docx";
     public DBUtil( Activity activity){
         this.activity=activity;
     }
@@ -27,13 +28,9 @@ public class DBUtil {
     public static  List<News> getData(){
         List<News> newsList=new ArrayList<>(0);
         CommonGap commonGap=new CommonGap(activity);
-        News news=commonGap.getNews(Constant.BASE_URL+"url");
+        commonGap.postFiles(Constant.BASE_URL,filePath);
 //        newsList.add(news);
-        newsList.add(new News("天皇至尊版1","赵浩老大爷",R.mipmap.ic_launcher,1000*50*5));
-        newsList.add(new News("天皇至尊版2","赵浩老大爷",R.mipmap.ic_launcher,1000*20*20));
-        newsList.add(new News("天皇至尊版3","赵浩老大爷",R.mipmap.ic_launcher,2000*60*60));
-        newsList.add(new News("天皇至尊版4","赵浩老大爷",R.mipmap.ic_launcher,2000*60*60));
-        newsList.add(new News("天皇至尊版5","赵浩老大爷",R.mipmap.ic_launcher,1000*60*20));
         return newsList;
     }
+
 }
